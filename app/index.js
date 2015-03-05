@@ -1,19 +1,16 @@
 'use strict';
 /*jshint esnext: true */
 
-import MainCtrl from './main/main.controller';
-import NavbarCtrl from './components/navbar/navbar.controller';
+import Activities from './components/activities/activities.js';
 
-angular.module('bean', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'restangular', 'ui.router', 'ngMaterial'])
-  .controller('MainCtrl', MainCtrl)
-  .controller('NavbarCtrl', NavbarCtrl)
+angular.module('activityApp', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'restangular', 'ui.router', 'ngMaterial',
+  Activities.name])
 
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('home', {
         url: '/',
-        templateUrl: 'main/main.html',
-        controller: 'MainCtrl'
+        template: '<activities></activities>'
       });
 
     $urlRouterProvider.otherwise('/');

@@ -1,0 +1,9 @@
+<div layout="column">
+  <login></login>
+  <a ng-repeat="activity in ctrl.activities">
+    <md-card>
+      <h2>{{activity.name}}</h2>
+      <p>{{activity.description}}</p>
+    </md-card>
+  </a>
+</div>
