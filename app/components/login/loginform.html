@@ -2,15 +2,15 @@
   <md-content>
     <div flex="15">
       <h3>Login</h3>
-      <form name="loginForm" ng-submit="loginForm.$valid && loginUser(loginData)" novalidate>
+      <form name="loginForm" ng-submit="loginForm.$valid && loginUser(loginData)" md-theme="loginForm" novalidate>
         <md-input-container>
           <label>Enter email</label>
-          <input ng-model="loginData.email" type="email" name="email" title="email" placeholder="Enter email" required/>
+          <input ng-model="loginData.email" type="email" name="email" title="email" required/>
         </md-input-container>
 
         <md-input-container>
           <label>Enter password</label>
-          <input ng-model="loginData.password" type="password" minlength="8" name="password" title="password" placeholder="Enter password" required/>
+          <input ng-model="loginData.password" type="password" minlength="8" name="password" title="password" required/>
         </md-input-container>
 
         <div class="md-actions">

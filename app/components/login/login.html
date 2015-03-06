@@ -1,4 +1,5 @@
 
-<md-button ng-click="ctrl.showDialog()">Login</md-button>
-
+<md-button class="md-accent" ng-click="ctrl.checkAuthStatus($event)">
+  {{ctrl.isLoggedIn ? 'logout' : 'login'}}
+</md-button>
 

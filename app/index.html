@@ -2,7 +2,7 @@
 <html class="no-js" ng-app="activityApp">
   <head>
     <meta charset="utf-8">
-    <title>bean</title>
+    <title>Activities</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -23,8 +23,14 @@
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
-    <div ui-view></div>
+    <md-toolbar class="tool-bar" layout="row" layout-align="center center">
+      <span>Activities</span>
+      <span flex></span>
+      <login></login>
+    </md-toolbar>
+    <md-content>
+      <div ui-view></div>
+    </md-content>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>

@@ -8,14 +8,31 @@ class Login {
     this.api = api;
     this.test = "constructor test";
     this.$mdDialog = $mdDialog;
+    this.isLoggedIn = !!localStorage.getItem('token');
     console.log('ctrl running');
+    console.log(this.isLoggedIn);
   }
 
   login (loginData) {
 
-    this.api.loginUser(loginData)
-      .then((data) => console.log('You successfully logged in.'));
+    return this.api.loginUser(loginData)
+      .then((data) => {
+
+        this.isLoggedIn = true;
+        console.log('You successfully logged in.')
+      });
+  };
+
+  logout () {
+
+    localStorage.removeItem('token');
+    this.isLoggedIn = false;
   }
+
+  checkAuthStatus (e) {
+    //ctrl.isLoggedIn ? ctrl.logout() : ctrl.showDialog($event)
+      this.isLoggedIn ? this.logout() : this.showDialog(e);
+  };
 
   showDialog ($event) {
 
@@ -30,7 +47,7 @@ class Login {
         //this.login('testing');
         scope.loginUser = (loginData) => {
 
-          this.login(loginData);
+          this.login(loginData).then(scope.closeDialog);
         };
 
         scope.closeDialog = function () {

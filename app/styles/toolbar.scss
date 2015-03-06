@@ -1,0 +1,19 @@
+
+html, body {
+  height: 100vh;
+  overflow: hidden;
+  background: #EEE;
+
+  > md-content {
+    max-height: calc(100% - 73px);
+    overflow: auto;
+  }
+}
+
+md-content.md-default-theme {
+  background: #EEE;
+}
+
+.tool-bar {
+  padding: 16px;
+}
