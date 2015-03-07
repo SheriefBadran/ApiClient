@@ -1,10 +1,31 @@
 'use strict';
 
+import Api from '../../scripts/services/api.js';
+
 class CreateActivity {
-	constructor() {}
+	constructor(api) {
+
+    this.api = api;
+    this.categories = [];
+    this.loadCategories();
+  }
+
+  create (data) {
+
+    this.api.createActivity(data, '/activities')
+      .success(data => console.log(data));
+  }
+
+  loadCategories () {
+
+    this.api.allCategories('json').then(categories => {
+
+      this.categories = categories.data;
+    });
+  }
 }
 
-export default angular.module('createActivity', [])
+export default angular.module('createActivity', [Api.name])
 	.directive('createActivity', function() {
 		return {
 			templateUrl: 'components/create-activity/create-activity.html',

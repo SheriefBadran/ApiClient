@@ -1,8 +1,13 @@
-<div layout="column">
-  <a ng-repeat="activity in ctrl.activities">
-    <md-card>
-      <h2>{{activity.name}}</h2>
-      <p>{{activity.description}}</p>
-    </md-card>
-  </a>
-</div>
+
+<!-- Transclude the create-activity view -->
+<md-content flex>
+  <div ng-transclude=""></div>
+  <div layout="column">
+    <a ng-repeat="activity in ctrl.activities" ui-sref="activity({id: activity.id})">
+      <md-card>
+        <h2>{{activity.name}}</h2>
+        <p>{{activity.description}}</p>
+      </md-card>
+    </a>
+  </div>
+</md-content>

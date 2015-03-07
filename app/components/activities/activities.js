@@ -1,7 +1,6 @@
 'use strict';
 
 import Api from '../../scripts/services/api.js';
-import Login from '../login/login.js';
 
 class Activities {
 	constructor(api) {
@@ -20,10 +19,11 @@ class Activities {
   }
 }
 
-export default angular.module('activities', [Api.name, Login.name])
+export default angular.module('activities', [Api.name])
 	.directive('activities', function() {
 		return {
 			templateUrl: 'components/activities/activities.html',
+      transclude: true,
 			restrict: 'E',
 			scope: {
 				// Specify attributes where parents can pass and receive data here

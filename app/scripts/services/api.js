@@ -31,6 +31,16 @@ class Api {
     return this.get(`/activities.${mediaType}`);
   }
 
+  getActivity (id) {
+
+    return this.get(`/activities/${id}`).then(({data}) => data);
+  }
+
+  allCategories (mediaType) {
+
+    return this.get(`/categories.${mediaType}`);
+  }
+
   // **POST methods**
   // POST method for login.
   authenticate (loginData) {
@@ -59,6 +69,29 @@ class Api {
 
       localStorage.setItem('token', auth_token);
     });
+  }
+
+  createActivity (data, path) {
+
+    var request = {
+      url: `${this.url}${path}`,
+      method: 'POST',
+      data: {
+        name: data.name,
+        description: data.description,
+        address: data.address,
+        indoors: data.indoors,
+        category_id: data.categoryObj.id
+      },
+      headers: {
+        Accept: 'application/json',
+        Authorization: 'Token token=5deb6c00-bd56-478d-bf87-cbfe8ae15a50',
+        token: localStorage.getItem('token'),
+        'Content-Type': 'application/json'
+      }
+    };
+
+    return this.$http(request);
   }
 
 }

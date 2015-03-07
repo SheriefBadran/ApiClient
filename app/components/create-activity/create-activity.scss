@@ -1,4 +1,16 @@
 create-activity {
   display: block;
 
+  md-content{
+    padding: 4px;
+  }
+
+  .md-button.md-default-theme.md-fab {
+    /*position: absolute;*/
+    font-size: 1.2em;
+  }
+
+  .md-button.md-default-theme.md-fab span {
+    font-size: 1em;
+  }
 }

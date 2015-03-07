@@ -1,1 +1,35 @@
-this is the &lt;create-activity&gt; component
+<md-content>
+  <md-button class="md-fab create-button"><span>+</span></md-button>
+  <md-content flex>
+    <form name="createForm" ng-submit="createForm.$valid && ctrl.create(data)" md-theme="forms" novalidate>
+      <md-input-container>
+        <label>Enter activity name</label>
+        <input ng-model="data.name" type="text" name="activityName" title="activity-name" required/>
+      </md-input-container>
+
+      <md-input-container>
+        <label>Enter description</label>
+        <input ng-model="data.description" type="text" maxlength="1000" name="description" title="description" required/>
+      </md-input-container>
+
+      <md-input-container>
+        <label>Enter address</label>
+        <input ng-model="data.address" type="text" maxlength="100" name="address" title="address" required/>
+      </md-input-container>
+
+      <md-radio-group ng-model="data.indoors">
+        <md-radio-button value="{{true}}">indoors</md-radio-button>
+        <md-radio-button value="{{false}}">outdoors</md-radio-button>
+      </md-radio-group>
+
+      <md-select ng-model="data.categoryObj">
+        <md-select-label>{{data.categoryObj.category ? data.categoryObj.category : 'Categorize'}}</md-select-label>
+        <md-option ng-value="c" ng-repeat="c in ctrl.categories">{{c.category}}</md-option>
+      </md-select>
+
+      <div class="md-actions">
+        <md-button>Create</md-button>
+      </div>
+    </form>
+  </md-content>
+</md-content>

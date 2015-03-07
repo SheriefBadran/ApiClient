@@ -2,10 +2,12 @@
 /*jshint esnext: true */
 
 import Activities from './components/activities/activities.js';
-import Login from './components/login/login.js'
+import CreateActivity from './components/create-activity/create-activity.js';
+import Login from './components/login/login.js';
+import ActivityDetail from './components/activity-detail/activity-detail.js';
 
 angular.module('activityApp', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'restangular', 'ui.router', 'ngMaterial',
-  Activities.name])
+  Activities.name, CreateActivity.name, Login.name, ActivityDetail.name])
 
   .config(function ($mdThemingProvider) {
     $mdThemingProvider.theme('default')
@@ -13,7 +15,7 @@ angular.module('activityApp', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize'
       .accentPalette('pink');
 
     // primary color only for loginform.
-    $mdThemingProvider.theme('loginForm')
+    $mdThemingProvider.theme('forms')
       .primaryPalette('teal');
 
   })
@@ -22,7 +24,15 @@ angular.module('activityApp', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize'
     $stateProvider
       .state('home', {
         url: '/',
-        template: '<activities></activities>'
+        template: '<activities><create-activity></create-activity></activities>'
+      })
+      .state('activity', {
+        url: 'activity/:id',
+        template: '<activity-detail id="{{id}}"><activity-detail>',
+        controller: function ($scope, $stateParams) {
+
+          $scope.id = $stateParams.id;
+        }
       });
 
     $urlRouterProvider.otherwise('/');

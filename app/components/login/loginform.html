@@ -2,7 +2,7 @@
   <md-content>
     <div flex="15">
       <h3>Login</h3>
-      <form name="loginForm" ng-submit="loginForm.$valid && loginUser(loginData)" md-theme="loginForm" novalidate>
+      <form name="loginForm" ng-submit="loginForm.$valid && loginUser(loginData)" md-theme="forms" novalidate>
         <md-input-container>
           <label>Enter email</label>
           <input ng-model="loginData.email" type="email" name="email" title="email" required/>
