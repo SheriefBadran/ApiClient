@@ -1,3 +1,4 @@
+
 <md-content>
   <!--<md-button class="md-fab create-button"><span>+</span></md-button>-->
   <md-content flex>
@@ -6,7 +7,6 @@
         <label>Enter activity name</label>
         <input ng-model="data.name" type="text" name="activityName" title="activity-name" required/>
       </md-input-container>
-
       <md-input-container>
         <label>Enter description</label>
         <input ng-model="data.description" type="text" maxlength="1000" name="description" title="description" required/>
@@ -16,7 +16,6 @@
         <label>Enter address</label>
         <input ng-model="data.address" type="text" maxlength="100" name="address" title="address" required/>
       </md-input-container>
-
       <md-radio-group ng-model="data.indoors">
         <md-radio-button value="{{true}}">indoors</md-radio-button>
         <md-radio-button value="{{false}}">outdoors</md-radio-button>
