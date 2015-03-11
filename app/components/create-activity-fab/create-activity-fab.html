@@ -1,6 +1,7 @@
 <md-button id="createButton"
            class="md-fab create-button"
            md-theme="forms"
-           ng-click="ctrl.showDialog($event)">
-            <md-icon md-svg-src="https://rawgit.com/google/material-design-icons/master/content/svg/production/ic_add_24px.svg"></md-icon>
+           ng-click=" ctrl.isDetailed() ? ctrl.showUpdateDialog($event) : ctrl.showCreateDialog($event)"
+           ng-if="ctrl.checkAuthStatus()">
+            <md-icon md-svg-src="https://rawgit.com/google/material-design-icons/master/{{ctrl.getIcon().category}}/svg/production/ic_{{ctrl.getIcon().name}}_24px.svg"></md-icon>
 </md-button>

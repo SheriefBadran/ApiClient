@@ -31,7 +31,6 @@ class Activities {
 
         this.api.allCategories('json').then(categories => {
 
-          console.log(categories);
           this.categories = categories.data;
         });
       })

@@ -2,13 +2,41 @@
 import CreateActivity from '../create-activity/create-activity.js';
 
 class CreateActivityFab {
-	constructor($mdDialog) {
+	constructor($mdDialog, $stateParams) {
 
+    this.$stateParams = $stateParams;
     this.$mdDialog = $mdDialog;
-
+    //this.isLoggedIn = !!localStorage.getItem('token');
   }
 
-  showDialog ($event) {
+  checkAuthStatus () {
+
+    return !!localStorage.getItem('token');
+  }
+
+  isDetailed () {
+
+    return this.$stateParams.id;
+  }
+
+  getIcon () {
+
+    let icon = {};
+    if (this.$stateParams.id) {
+
+      icon.category = 'editor';
+      icon.name = 'mode_edit';
+    }
+    else {
+
+      icon.category = 'content';
+      icon.name = 'add';
+    }
+
+    return icon;
+  }
+
+  showCreateDialog ($event) {
 
     var parentEl = angular.element(document.body);
     this.$mdDialog.show({
@@ -33,6 +61,29 @@ class CreateActivityFab {
     });
   }
 
+  showUpdateDialog ($event) {
+
+    this.$mdDialog.show({
+
+      parent: parentEl,
+      targetEvent: $event,
+      templateUrl: "components/create-activity-fab/updateform.html",
+      controller: (scope, $mdDialog) => {
+
+        //this.login('testing');
+        //scope.create = (data) => {
+        //
+        //
+        //};
+
+        scope.closeDialog = function () {
+
+          $mdDialog.hide();
+        }
+      },
+      controllerAs: 'formCtrl'
+    });
+  }
 
 }
 
