@@ -30,7 +30,7 @@ class Login {
   }
 
   checkAuthStatus (e) {
-    //ctrl.isLoggedIn ? ctrl.logout() : ctrl.showDialog($event)
+
       this.isLoggedIn ? this.logout() : this.showDialog(e);
   };
 

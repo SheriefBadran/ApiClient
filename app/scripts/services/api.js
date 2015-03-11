@@ -31,6 +31,19 @@ class Api {
     return this.get(`/activities.${mediaType}`);
   }
 
+  queryActivities (mediaType, query) {
+
+    if (query) {
+      //json?search=true&query=gäst
+      return this.get(`/activities.${mediaType}?search=true&query=${query}`);
+    }
+    else {
+
+      return this.get(`/activities.${mediaType}`);
+    }
+
+  }
+
   getActivity (id) {
 
     return this.get(`/activities/${id}`).then(({data}) => data);
