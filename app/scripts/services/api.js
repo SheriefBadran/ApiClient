@@ -34,7 +34,7 @@ class Api {
   queryActivities (mediaType, query) {
 
     if (query) {
-      //json?search=true&query=gäst
+
       return this.get(`/activities.${mediaType}?search=true&query=${query}`);
     }
     else {
@@ -86,7 +86,7 @@ class Api {
 
   createActivity (data, path) {
 
-    var request = {
+    let request = {
       url: `${this.url}${path}`,
       method: 'POST',
       data: {
@@ -95,6 +95,27 @@ class Api {
         address: data.address,
         indoors: data.indoors,
         category_id: data.categoryObj.id
+      },
+      headers: {
+        Accept: 'application/json',
+        Authorization: 'Token token=5deb6c00-bd56-478d-bf87-cbfe8ae15a50',
+        token: localStorage.getItem('token'),
+        'Content-Type': 'application/json'
+      }
+    };
+
+    return this.$http(request);
+  }
+
+  updateActivity (data, path) {
+
+    let request = {
+      url: `${this.url}${path}`,
+      method: 'PUT',
+      data: {
+        name: data.name,
+        description: data.description,
+        indoors: data.indoors
       },
       headers: {
         Accept: 'application/json',

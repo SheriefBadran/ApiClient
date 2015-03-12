@@ -1,11 +1,17 @@
 'use strict';
 
 class ActivityDetail {
-	constructor(api) {
+	constructor($rootScope, api) {
 
+    this.$rootScope = $rootScope;
     this.api = api;
     this.activity = {};
     this.getActivity();
+
+    $rootScope.$on('updatedActivity', (event, activity) => {
+
+      this.activity = activity;
+    });
   }
 
   getActivity () {

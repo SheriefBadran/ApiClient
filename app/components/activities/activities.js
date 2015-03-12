@@ -3,9 +3,8 @@
 import Api from '../../scripts/services/api.js';
 
 class Activities {
-	constructor(api, $timeout, $scope, $rootScope) {
+	constructor(api, $timeout, $rootScope) {
 
-    this.$scope = $scope;
     this.$timeout = $timeout;
     this.api = api;
     this.activities = [];
@@ -14,10 +13,7 @@ class Activities {
     this.searchText = '';
     this.isDisabled = false;
 
-    console.log(this.searchText);
-
     $rootScope.$on('createdActivity', (event, data) => { this.activities.push(data); });
-
   }
 
   loadAllActivities () {
@@ -36,12 +32,22 @@ class Activities {
       })
   }
 
-  search (searchText) {
+  search (filterType) {
 
-    this.$timeout(() => {
+    if (filterType === 'creator') {
 
-      this.api.queryActivities('json', this.searchText).then(activities => { this.activities = activities.data; });
-    }, 1000);
+      console.log('searching creator');
+      return;
+    }
+    else {
+
+      console.log('searching activity...');
+    }
+
+    //this.$timeout(() => {
+    //
+    //  this.api.queryActivities('json', this.searchText).then(activities => { this.activities = activities.data; });
+    //}, 1000);
     //console.log(searchText);
   }
 }

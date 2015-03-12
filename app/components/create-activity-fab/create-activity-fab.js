@@ -1,12 +1,12 @@
 'use strict';
 import CreateActivity from '../create-activity/create-activity.js';
+import UpdateActivity from '../update-activity/update-activity.js';
 
 class CreateActivityFab {
 	constructor($mdDialog, $stateParams) {
 
     this.$stateParams = $stateParams;
     this.$mdDialog = $mdDialog;
-    //this.isLoggedIn = !!localStorage.getItem('token');
   }
 
   checkAuthStatus () {
@@ -57,37 +57,25 @@ class CreateActivityFab {
           $mdDialog.hide();
         }
       },
-      controllerAs: 'formCtrl'
+      controllerAs: 'createFormCtrl'
     });
   }
 
   showUpdateDialog ($event) {
 
+    var parentEl = angular.element(document.body);
     this.$mdDialog.show({
 
       parent: parentEl,
       targetEvent: $event,
       templateUrl: "components/create-activity-fab/updateform.html",
-      controller: (scope, $mdDialog) => {
-
-        //this.login('testing');
-        //scope.create = (data) => {
-        //
-        //
-        //};
-
-        scope.closeDialog = function () {
-
-          $mdDialog.hide();
-        }
-      },
-      controllerAs: 'formCtrl'
+      controllerAs: 'updateFormCtrl'
     });
   }
 
 }
 
-export default angular.module('createActivity')
+export default angular.module('createActivityFab', [CreateActivity.name, UpdateActivity.name])
 	.directive('createActivityFab', function() {
 		return {
 			templateUrl: 'components/create-activity-fab/create-activity-fab.html',
@@ -101,7 +89,7 @@ export default angular.module('createActivity')
 				// & One way outgoing behaviour (like ng-click)
 			},
 			bindToController: true,
-			controller: CreateActivityFab ,
+			controller: CreateActivityFab,
 			controllerAs: 'ctrl'
 		};
 	});

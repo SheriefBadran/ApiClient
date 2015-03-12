@@ -2,8 +2,8 @@
 <md-content>
   <!--<md-button class="md-fab create-button"><span>+</span></md-button>-->
   <md-content flex>
-    <h3>Create new activity</h3>
-    <form name="createForm" ng-submit="createForm.$valid && ctrl.create(data)" md-theme="forms" novalidate>
+    <h3>Update</h3>
+    <form name="updateForm" ng-submit="updateForm.$valid && ctrl.update(data)" md-theme="forms" novalidate>
       <md-input-container>
         <label>Enter activity name</label>
         <input ng-model="data.name" type="text" name="activityName" title="activity-name" required/>
@@ -13,22 +13,19 @@
         <input ng-model="data.description" type="text" maxlength="1000" name="description" title="description" required/>
       </md-input-container>
 
-      <md-input-container>
-        <label>Enter address</label>
-        <input ng-model="data.address" type="text" maxlength="100" name="address" title="address" required/>
-      </md-input-container>
       <md-radio-group ng-model="data.indoors">
         <md-radio-button value="{{true}}">indoors</md-radio-button>
         <md-radio-button value="{{false}}">outdoors</md-radio-button>
       </md-radio-group>
 
-      <md-select ng-model="data.categoryObj">
-        <md-select-label>{{data.categoryObj.category ? data.categoryObj.category : 'Categorize'}}</md-select-label>
-        <md-option ng-value="c" ng-repeat="c in ctrl.categories">{{c.category}}</md-option>
-      </md-select>
+      <!--Add category update if there is time left-->
+      <!--<md-select ng-model="data.categoryObj">-->
+        <!--<md-select-label>{{data.categoryObj.category ? data.categoryObj.category : 'Categorize'}}</md-select-label>-->
+        <!--<md-option ng-value="c" ng-repeat="c in ctrl.categories">{{c.category}}</md-option>-->
+      <!--</md-select>-->
 
       <div class="md-actions">
-        <md-button ng-click="formCtrl.closeDialog()">Create</md-button>
+        <md-button>Update</md-button>
       </div>
     </form>
   </md-content>
