@@ -107,6 +107,7 @@ class Api {
     return this.$http(request);
   }
 
+  // ** PUT methods **
   updateActivity (data, path) {
 
     let request = {
@@ -126,6 +127,24 @@ class Api {
     };
 
     return this.$http(request);
+  }
+
+  // ** DELETE methods **
+  delete (path) {
+
+    var request = {
+      method: 'DELETE',
+      url: `${this.url}${path}`,
+      headers: {
+        Accept: 'application/json',
+        Authorization: 'Token token=5deb6c00-bd56-478d-bf87-cbfe8ae15a50',
+        token: localStorage.getItem('token'),
+        'Content-Type': 'application/json'
+      }
+    };
+
+    return this.$http(request)
+      .then(({data: deletedActivity}) => deletedActivity);
   }
 
 }

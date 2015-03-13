@@ -1,11 +1,13 @@
 'use strict';
 
 class ActivityDetail {
-	constructor($rootScope, api) {
+	constructor($rootScope, api, $state) {
 
     this.$rootScope = $rootScope;
     this.api = api;
+    this.$state = $state;
     this.activity = {};
+    this.creator = localStorage.getItem('email');
     this.getActivity();
 
     $rootScope.$on('updatedActivity', (event, activity) => {
@@ -17,7 +19,23 @@ class ActivityDetail {
   getActivity () {
 
     // this.id is set in directive's scope id property.
-    this.api.getActivity(this.id).then(activity => this.activity = activity);
+    this.api.getActivity(this.id).then(activity => {
+
+      this.$rootScope.email = activity.creator.email;
+      this.activity = activity;
+    });
+  }
+
+  checkAuthStatus () {
+
+    this.creator = localStorage.getItem('email');
+    return !!localStorage.getItem('token');
+  }
+
+  delete() {
+
+    this.api.delete(`/activities/${this.id}`).then(data => console.log(data));
+    this.$state.go('home');
   }
 }
 

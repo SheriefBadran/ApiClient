@@ -17,7 +17,6 @@ angular.module('activityApp', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize'
     // primary color only for loginform.
     $mdThemingProvider.theme('forms')
       .primaryPalette('teal');
-
   })
 
   .config(function ($stateProvider, $urlRouterProvider) {
@@ -30,7 +29,7 @@ angular.module('activityApp', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize'
         url: 'activity/:id',
         template: '<activity-detail id="{{id}}"><activity-detail>',
         controller: function ($scope, $stateParams) {
-
+          console.log('state');
           $scope.id = $stateParams.id;
         }
       });

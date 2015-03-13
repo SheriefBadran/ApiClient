@@ -19,15 +19,17 @@ class Login {
       .then((data) => {
 
         this.isLoggedIn = true;
-        console.log('You successfully logged in.')
+        localStorage.setItem('email', loginData.email);
+        console.log('You successfully logged in.');
       });
   };
 
   logout () {
 
     localStorage.removeItem('token');
+    localStorage.removeItem('email');
     this.isLoggedIn = false;
-  }
+  };
 
   checkAuthStatus (e) {
 

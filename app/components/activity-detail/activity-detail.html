@@ -1,7 +1,11 @@
 <md-content flex>
   <div layout="column">
     <md-card>
+      {{ctrl.activity.creator.email}}
+      {{ctrl.creator}}
       <h2>{{ctrl.activity.name}}</h2>
+      <md-button ng-if="ctrl.checkAuthStatus() && (ctrl.activity.creator.email == ctrl.creator)"
+                 ng-click="ctrl.delete()">Delete</md-button>
     </md-card>
   </div>
 <md-content flex>

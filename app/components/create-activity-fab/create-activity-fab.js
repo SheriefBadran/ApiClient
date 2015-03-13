@@ -3,16 +3,42 @@ import CreateActivity from '../create-activity/create-activity.js';
 import UpdateActivity from '../update-activity/update-activity.js';
 
 class CreateActivityFab {
-	constructor($mdDialog, $stateParams) {
+	constructor(api, $mdDialog, $stateParams, $rootScope) {
 
-    this.$stateParams = $stateParams;
+    this.api = api;
     this.$mdDialog = $mdDialog;
+    this.$stateParams = $stateParams;
+    this.$rootScope = $rootScope;
+    this.creator = {};
+    //this.getActivity();
+
+  }
+
+  //getActivity () {
+  //
+  //  if (!this.$stateParams.id) return;
+  //
+  //  this.api.getActivity(this.$stateParams.id).then(({email}) => { this.email = email; });
+  //  console.log(this.email);
+  //}
+
+  checkCreator () {
+
+    if (this.$stateParams.id) {
+
+      return this.$rootScope.email === localStorage.getItem('email');
+    }
+    else {
+
+      return true;
+    }
+
   }
 
   checkAuthStatus () {
 
     return !!localStorage.getItem('token');
-  }
+  };
 
   isDetailed () {
 
