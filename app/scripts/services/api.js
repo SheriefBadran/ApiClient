@@ -44,6 +44,13 @@ class Api {
 
   }
 
+  nearActivities (mediaType, radius, coords) {
+
+    //range=2&latitude=56.6791069&longitude=16.35807269999998
+    return this.get(`/activities.${mediaType}?range=${radius}&latitude=${coords.latitude}&longitude=${coords.longitude}`)
+      .then(({data}) => data);
+  }
+
   getActivity (id) {
 
     return this.get(`/activities/${id}`).then(({data}) => data);
@@ -59,7 +66,7 @@ class Api {
   authenticate (loginData) {
 
     var request = {
-      url: "http://localhost:3000/auth",
+      url: 'http://localhost:3000/auth',
       method: 'POST',
       data: {
         email: loginData.email,
@@ -146,7 +153,6 @@ class Api {
     return this.$http(request)
       .then(({data: deletedActivity}) => deletedActivity);
   }
-
 }
 
 export default angular.module('api', [])

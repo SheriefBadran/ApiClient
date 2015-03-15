@@ -1,11 +1,14 @@
 'use strict';
 
+import Tempcache from '../../scripts/services/tempcache.js';
+
 class ActivityDetail {
-	constructor($rootScope, api, $state) {
+	constructor($rootScope, api, $state, tempCache) {
 
     this.$rootScope = $rootScope;
     this.api = api;
     this.$state = $state;
+    this.tempCache = tempCache;
     this.activity = {};
     this.creator = localStorage.getItem('email');
     this.getActivity();
@@ -32,14 +35,16 @@ class ActivityDetail {
     return !!localStorage.getItem('token');
   }
 
-  delete() {
+  delete () {
 
-    this.api.delete(`/activities/${this.id}`).then(data => console.log(data));
-    this.$state.go('home');
+    console.log(`0. activity detail delete is calling setActivityAsDeleted`);
+    this.api.delete(`/activities/${this.id}`)
+      .then(data => this.tempCache.setActivityAsDeleted(data))
+      .then(() => this.$state.go('home'));
   }
 }
 
-export default angular.module('activityDetail', [])
+export default angular.module('activityDetail', [Tempcache.name])
 	.directive('activityDetail', function() {
 		return {
 			templateUrl: 'components/activity-detail/activity-detail.html',

@@ -5,9 +5,11 @@ import Activities from './components/activities/activities.js';
 import Login from './components/login/login.js';
 import ActivityDetail from './components/activity-detail/activity-detail.js';
 import CreateActivityFab from './components/create-activity-fab/create-activity-fab.js';
+import NearActivitiesButton from './components/near-activities-button/near-activities-button.js';
+import NearActivities from './components/near-activities/near-activities.js';
 
 angular.module('activityApp', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'restangular', 'ui.router', 'ngMaterial',
-  Activities.name, CreateActivityFab.name, Login.name, ActivityDetail.name])
+  Activities.name, Login.name, ActivityDetail.name, CreateActivityFab.name, NearActivitiesButton.name, NearActivities.name])
 
   .config(function ($mdThemingProvider) {
     $mdThemingProvider.theme('default')
@@ -26,14 +28,18 @@ angular.module('activityApp', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize'
         template: '<activities></activities>'
       })
       .state('activity', {
-        url: 'activity/:id',
+        url: '/activity/:id',
         template: '<activity-detail id="{{id}}"><activity-detail>',
         controller: function ($scope, $stateParams) {
-          console.log('state');
           $scope.id = $stateParams.id;
         }
+      })
+      .state('map', {
+        url: '/near',
+        template: '<near-activities></near-activities>'
       });
 
     $urlRouterProvider.otherwise('/');
+    //$locationProvider.html5Mode(true);
   })
 ;

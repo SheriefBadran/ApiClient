@@ -1,19 +1,62 @@
 'use strict';
 
 import Api from '../../scripts/services/api.js';
+import Tempcache from '../../scripts/services/tempcache.js';
 
 class Activities {
-	constructor(api, $timeout, $rootScope) {
+	constructor(api, tempCache, $timeout, $rootScope, $scope, $mdToast) {
 
-    this.$timeout = $timeout;
     this.api = api;
+    this.tempCache = tempCache;
+    this.$timeout = $timeout;
+    this.$mdToast = $mdToast;
     this.activities = [];
     this.categories = [];
-    this.loadAllActivities();
     this.searchText = '';
-    this.isDisabled = false;
+    this.$scope = $scope;
+    this.all = '';
+    this.loadAllActivities();
+    this.showToast();
 
-    $rootScope.$on('createdActivity', (event, data) => { this.activities.push(data); });
+    $rootScope.$on('createdActivity', (event, createdActivity) => { this.activities.unshift(createdActivity); });
+
+    $scope.$watch('data.categoryObj', (category, prevCategory) => {
+
+      //console.log(`category: ${category}`);
+      //console.log(`prevCategory: ${prevCategory}`);
+      if (!category && !prevCategory) {
+
+        //console.log('init');
+        return undefined;
+      }
+      else if (!category) {
+
+        //console.log('watcher reset category filter.');
+        this.tempCache.resetCategoryFiltering();
+      }
+      else {
+
+        //console.log('watcher is saving category filter in api.');
+        this.tempCache.saveCategoryFiltering(category);
+      }
+
+
+    });
+  }
+
+  getCategoryFilter () {
+
+    let category = this.tempCache.getCategoryFilter();
+
+    if (category) {
+
+      //console.log('getCategoryFilter returns a category.');
+      return this.tempCache.getCategoryFilter().category;
+    }
+    else {
+
+      return undefined;
+    }
   }
 
   loadAllActivities () {
@@ -29,30 +72,56 @@ class Activities {
 
           this.categories = categories.data;
         });
-      })
+      });
   }
 
-  search (filterType) {
+  cacheQuery (query) {
 
-    if (filterType === 'creator') {
+    this.$timeout(() => {
+      console.log(query);
+      this.tempCache.cacheQuery(query);
+    }, 100);
+  }
 
-      console.log('searching creator');
+  getCachedQuery () {
+
+    return this.tempCache.getCachedQuery();
+  }
+
+  resetQueryCache () {
+
+    this.tempCache.resetQueryCache();
+    return '';
+  }
+
+  getToastPosition () {
+
+    return this.tempCache.getToastPosition();
+  }
+
+  showToast () {
+
+    //console.log(`5. isActivityDeleted() from showToast: ${this.tempCache.isActivityDeleted()}`);
+    if (!this.tempCache.isActivityDeleted())
       return;
-    }
-    else {
 
-      console.log('searching activity...');
-    }
+    this.$mdToast.show({
+      controller: (scope, $mdToast) => {
 
-    //this.$timeout(() => {
-    //
-    //  this.api.queryActivities('json', this.searchText).then(activities => { this.activities = activities.data; });
-    //}, 1000);
-    //console.log(searchText);
+        scope.closeToast = function () {
+
+          $mdToast.hide();
+        }
+      },
+      templateUrl: 'components/activities/delete-toast.html',
+      hideDelay: 6000,
+      position: this.getToastPosition()
+    });
   }
+
 }
 
-export default angular.module('activities', [Api.name])
+export default angular.module('activities', [Api.name, Tempcache.name])
 	.directive('activities', function() {
 		return {
 			templateUrl: 'components/activities/activities.html',

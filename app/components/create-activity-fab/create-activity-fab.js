@@ -10,7 +10,6 @@ class CreateActivityFab {
     this.$stateParams = $stateParams;
     this.$rootScope = $rootScope;
     this.creator = {};
-    //this.getActivity();
 
   }
 
@@ -38,7 +37,7 @@ class CreateActivityFab {
   checkAuthStatus () {
 
     return !!localStorage.getItem('token');
-  };
+  }
 
   isDetailed () {
 
@@ -69,7 +68,7 @@ class CreateActivityFab {
 
       parent: parentEl,
       targetEvent: $event,
-      templateUrl: "components/create-activity-fab/createform.html",
+      templateUrl: 'components/create-activity-fab/createform.html',
       controller: (scope, $mdDialog) => {
 
         //this.login('testing');
@@ -81,7 +80,7 @@ class CreateActivityFab {
         scope.closeDialog = function () {
 
           $mdDialog.hide();
-        }
+        };
       },
       controllerAs: 'createFormCtrl'
     });
@@ -94,7 +93,7 @@ class CreateActivityFab {
 
       parent: parentEl,
       targetEvent: $event,
-      templateUrl: "components/create-activity-fab/updateform.html",
+      templateUrl: 'components/create-activity-fab/updateform.html',
       controllerAs: 'updateFormCtrl'
     });
   }

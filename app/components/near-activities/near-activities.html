@@ -1,0 +1,13 @@
+
+<ui-gmap-google-map center='ctrl.map.center' zoom='ctrl.map.zoom'>
+  <ui-gmap-markers
+    models="ctrl.nearActivities"
+    idkey="'id'"
+    coords="'position'"
+    fit="true"
+    modelsbyref="true"
+    labelContent="'{'test'}'"
+    options="'label{title: name}'">
+
+  </ui-gmap-markers>
+</ui-gmap-google-map>

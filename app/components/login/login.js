@@ -6,7 +6,6 @@ class Login {
 	constructor($mdDialog, api) {
 
     this.api = api;
-    this.test = "constructor test";
     this.$mdDialog = $mdDialog;
     this.isLoggedIn = !!localStorage.getItem('token');
     console.log('ctrl running');
@@ -22,19 +21,19 @@ class Login {
         localStorage.setItem('email', loginData.email);
         console.log('You successfully logged in.');
       });
-  };
+  }
 
   logout () {
 
     localStorage.removeItem('token');
     localStorage.removeItem('email');
     this.isLoggedIn = false;
-  };
+  }
 
   checkAuthStatus (e) {
 
       this.isLoggedIn ? this.logout() : this.showDialog(e);
-  };
+  }
 
   showDialog ($event) {
 
@@ -43,7 +42,7 @@ class Login {
 
       parent: parentEl,
       targetEvent: $event,
-      templateUrl: "components/login/loginform.html",
+      templateUrl: 'components/login/loginform.html',
       controller: (scope, $mdDialog) => {
 
         //this.login('testing');
@@ -55,7 +54,7 @@ class Login {
         scope.closeDialog = function () {
 
           $mdDialog.hide();
-        }
+        };
       },
       controllerAs: 'formCtrl'
     });
