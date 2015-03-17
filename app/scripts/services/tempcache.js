@@ -44,23 +44,26 @@ class Tempcache {
 
   setActivityAsDeleted (activity) {
 
-    console.log(`1. set activity as deleted`);
     this.deletedActivity = activity;
     this.isDeleted = true;
-    console.log(`2. verify deleted: ${this.isDeleted}`);
   }
 
   isActivityDeleted() {
 
     let isDeleted = this.isDeleted;
-    console.log(`3. isDeleted in tempcache should now be true: ${isDeleted}`);
-    if (this.isDeleted) {
-      this.isDeleted = false;
-      this.deletedActivity = null;
-    }
 
-    console.log(`4. tempcache says and returns isDeleted: ${isDeleted}`);
+    if (this.isDeleted)
+      this.isDeleted = false;
+
     return isDeleted;
+  }
+
+  getDeletedActivity() {
+
+    let activity = this.deletedActivity;
+    this.deletedActivity = null;
+
+    return activity;
   }
 
   getToastPosition () {

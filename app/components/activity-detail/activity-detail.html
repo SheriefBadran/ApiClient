@@ -1,11 +1,46 @@
 <md-content flex>
   <div layout="column">
     <md-card>
-      {{ctrl.activity.creator.email}}
-      {{ctrl.creator}}
-      <h2>{{ctrl.activity.name}}</h2>
+      <md-item flex>
+        <md-item-content flex>
+          <!--<div class="md-tile-left">-->
+            <!--<img src="//placeimg.com/120/120/any" class="face" alt="" flex>-->
+          <!--</div>-->
+          <div class="md-tile-content" flex>
+            <h2>{{ctrl.activity.name}}</h2>
+            <h4>{{ctrl.activity.categories.category}}</h4>
+            <h3>Description</h3>
+            <p class="description-content">
+              {{ctrl.activity.description}}
+            </p>
+            <md-content class="md-padding address-container">
+              <p>
+                <span>
+                  Address:
+                  {{ctrl.activity.position.address}}
+                </span>
+              </p>
+              <p>
+                <span>
+                  City:
+                  {{ctrl.activity.position.city}}
+                </span>
+              </p>
+              <p>
+                <span>
+                  <!--<md-icon md-svg-src="https://rawgit.com/google/material-design-icons/master/maps/svg/production/ic_place_24px.svg"></md-icon>-->
+                  County:
+                  {{ctrl.activity.position.zipcode}}, {{ctrl.activity.position.country}}
+                </span>
+              </p>
+            </md-content>
+          </div>
+        </md-item-content>
+      </md-item>
       <md-button ng-if="ctrl.checkAuthStatus() && (ctrl.activity.creator.email == ctrl.creator)"
-                 ng-click="ctrl.delete()">Delete</md-button>
+                 ng-click="ctrl.delete()">
+        Delete
+      </md-button>
     </md-card>
   </div>
 <md-content flex>

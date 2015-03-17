@@ -11,7 +11,8 @@
     "angular-material": "~0.8.0",
     "traceur-runtime": "~0.0.74",
     "angular": "~1.4.0",
-    "angular-google-maps": "~2.0.16"
+    "angular-google-maps": "~2.0.16",
+    "ng-messages": "*"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.0"

@@ -1,9 +1,26 @@
 activity-detail {
   display: block;
+  width: 60%;
+  margin: 4% auto;
 
-  > md-card {
-    width: 60%;
-    margin: auto;
+  .md-tile-left {
+    margin: 16px;
+  }
+
+  >md-button {
+    width: 20px;
+  }
+
+  .description-content {
+    font-size: 0.9em;
+  }
+
+  .address-container {
+    margin-top: 16px;
+  }
+
+  .md-tile-content {
+    margin: 16px;
   }
 }
 

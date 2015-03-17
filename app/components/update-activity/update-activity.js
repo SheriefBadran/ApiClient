@@ -9,6 +9,10 @@ class UpdateActivity {
     this.$stateParams = $stateParams;
     this.$rootScope = $rootScope;
     this.$mdDialog = $mdDialog;
+    this.categories = [];
+    this.loadCategories();
+    this.loadActivity();
+    this.data = {};
   }
 
   update (data) {
@@ -17,12 +21,31 @@ class UpdateActivity {
       .success(data => {
 
         this.$mdDialog.hide();
+        // Broadcast the updated activity object to activity-detail.js to update the activity-detail view when update succeed.
+        console.log(data);
         this.$rootScope.$emit('updatedActivity', data);
       });
   }
+
+  loadActivity () {
+
+    this.api.getActivity(this.$stateParams.id)
+      .then(data => {
+        console.log(data);
+        this.data = data;
+      });
+  }
+
+  loadCategories () {
+
+    this.api.allCategories('json').then(categories => {
+
+      this.categories = categories.data;
+    });
+  }
 }
 
-export default angular.module('updateActivity', [])
+export default angular.module('updateActivity', ['ngMessages'])
 	.directive('updateActivity', function() {
 		return {
 			templateUrl: 'components/update-activity/update-activity.html',

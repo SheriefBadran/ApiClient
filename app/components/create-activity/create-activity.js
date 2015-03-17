@@ -3,19 +3,29 @@
 import Api from '../../scripts/services/api.js';
 
 class CreateActivity {
-	constructor($rootScope, api) {
+	constructor($mdDialog, $rootScope, api) {
+    this.$mdDialog = $mdDialog;
     this.api = api;
     this.$rootScope = $rootScope;
     this.categories = [];
     this.loadCategories();
     this.showForm = false;
+    this.createForm = {};
+    this.data = {};
+    this.updateForm = {};
   }
 
   create (data) {
 
+    console.log(this.createForm);
+    if (!this.createForm.$valid) return;
+
+
     this.api.createActivity(data, '/activities')
       .success(data => {
 
+        this.$mdDialog.hide();
+        // Broadcast the created activity object to activities.js to add the new activity to list-view when create succeed.
         this.$rootScope.$emit('createdActivity', data);
       });
   }
@@ -28,12 +38,21 @@ class CreateActivity {
     });
   }
 
+  //getActivityToUpdate () {
+  //
+  //  this.api.getActivity(this.id).then(activity => {
+  //    this.data.name = activity.name;
+  //    this.data.description = activity.description;
+  //    this.data.indoors = activity.indoors;
+  //  });
+  //}
+
   isActive() {
     return this.showForm;
   }
 }
 
-export default angular.module('createActivity', [Api.name])
+export default angular.module('createActivity', [Api.name, 'ngMessages'])
 	.directive('createActivity', function() {
 		return {
 			templateUrl: 'components/create-activity/create-activity.html',

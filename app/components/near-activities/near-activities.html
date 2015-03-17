@@ -9,5 +9,12 @@
     labelContent="'{'test'}'"
     options="'label{title: name}'">
 
+    <ui-gmap-windows
+      idKey="'id'"
+      models="ctrl.nearActivities.position"
+      show="show">
+      <div ng-non-bindable>{{name}}</div>
+    </ui-gmap-windows>
+
   </ui-gmap-markers>
 </ui-gmap-google-map>

@@ -53,7 +53,9 @@ class Api {
 
   getActivity (id) {
 
-    return this.get(`/activities/${id}`).then(({data}) => data);
+    return this.get(`/activities/${id}`).then(({data}) => data).catch(() => {
+      throw false;
+    });
   }
 
   allCategories (mediaType) {
@@ -123,7 +125,9 @@ class Api {
       data: {
         name: data.name,
         description: data.description,
-        indoors: data.indoors
+        address: data.position.address,
+        indoors: data.indoors,
+        category_id: data.categoryObj.id
       },
       headers: {
         Accept: 'application/json',

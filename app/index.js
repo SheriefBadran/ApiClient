@@ -37,6 +37,10 @@ angular.module('activityApp', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize'
       .state('map', {
         url: '/near',
         template: '<near-activities></near-activities>'
+      })
+      .state('not-found', {
+        url: '/not-found',
+        templateUrl: '404.html'
       });
 
     $urlRouterProvider.otherwise('/');

@@ -26,7 +26,9 @@ class ActivityDetail {
 
       this.$rootScope.email = activity.creator.email;
       this.activity = activity;
-    });
+    })
+     // Redirect to home if resource is not found.
+    .catch(() => { this.$state.go('not-found'); });
   }
 
   checkAuthStatus () {

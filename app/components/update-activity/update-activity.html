@@ -3,17 +3,35 @@
   <!--<md-button class="md-fab create-button"><span>+</span></md-button>-->
   <md-content flex>
     <h3>Update</h3>
-    <form name="updateForm" ng-submit="updateForm.$valid && ctrl.update(data)" md-theme="forms" novalidate>
+    <form name="ctrl.updateForm" ng-submit="ctrl.updateForm.$valid && ctrl.update(ctrl.data)" md-theme="forms" novalidate>
+
       <md-input-container>
         <label>Enter activity name</label>
-        <input ng-model="data.name" type="text" name="activityName" title="activity-name" required/>
-      </md-input-container>
-      <md-input-container>
-        <label>Enter description</label>
-        <input ng-model="data.description" type="text" maxlength="1000" name="description" title="description" required/>
+        <input ng-model="ctrl.data.name" type="text" name="activityName" title="activity-name" required/>
       </md-input-container>
 
-      <md-radio-group ng-model="data.indoors">
+      <md-input-container>
+        <label>Enter description</label>
+        <input ng-model="ctrl.data.description" type="text" maxlength="1000" name="description" title="description" required/>
+      </md-input-container>
+
+      <md-input-container>
+        <label>Enter address</label>
+        <input ng-model="ctrl.data.position.address" type="text" maxlength="100" name="address" title="address" required/>
+      </md-input-container>
+
+      <div ng-messages="ctrl.updateForm.category.$error">
+        <div ng-message="required">Select a category.</div>
+      </div>
+      <md-select name="category" ng-model="ctrl.data.categoryObj" required>
+        <md-select-label>{{ctrl.data.categoryObj.category ? ctrl.data.categoryObj.category : 'Categorize'}}</md-select-label>
+        <md-option ng-value="c" ng-repeat="c in ctrl.categories">{{c.category}}</md-option>
+      </md-select>
+
+      <md-radio-group name="indoors" ng-model="ctrl.data.indoors" required>
+        <div ng-messages="ctrl.updateForm.indoors.$error">
+          <div ng-message="required">Select if activity is indoors or outdoors.</div>
+        </div>
         <md-radio-button value="{{true}}">indoors</md-radio-button>
         <md-radio-button value="{{false}}">outdoors</md-radio-button>
       </md-radio-group>

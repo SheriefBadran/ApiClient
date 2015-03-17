@@ -32,6 +32,7 @@
             body {
                 max-width: 500px;
                 _width: 500px;
+                max-height: 95%;
                 padding: 30px 20px 50px;
                 border: 1px solid #b3b3b3;
                 border-radius: 4px;
@@ -41,7 +42,7 @@
             }
 
             h1 {
-                margin: 0 10px;
+                /*margin: 10px;*/
                 font-size: 50px;
                 text-align: center;
             }
@@ -61,6 +62,14 @@
             ul {
                 padding: 0 0 0 40px;
                 margin: 1em 0;
+            }
+
+            a {
+              color: blue;
+            }
+
+            a:hover {
+              text-decoration: underline;
             }
 
             .container {
@@ -142,16 +151,18 @@
     <body>
         <div class="container">
             <h1>Not found <span>:(</span></h1>
-            <p>Sorry, but the page you were trying to view does not exist.</p>
+            <p>Sorry, but the page you were trying to view does not exist. Go ahead and create a resource, logout or
+              <a ui-sref="home">Go Home!</a>
+            </p>
             <p>It looks like this was the result of either:</p>
             <ul>
                 <li>a mistyped address</li>
                 <li>an out-of-date link</li>
             </ul>
-            <script>
-                var GOOG_FIXURL_LANG = (navigator.language || '').slice(0,2),GOOG_FIXURL_SITE = location.host;
-            </script>
-            <script src="//linkhelp.clients.google.com/tbproxy/lh/wm/fixurl.js"></script>
+            <!--<script>-->
+                <!--var GOOG_FIXURL_LANG = (navigator.language || '').slice(0,2),GOOG_FIXURL_SITE = location.host;-->
+            <!--</script>-->
+            <!--<script src="//linkhelp.clients.google.com/tbproxy/lh/wm/fixurl.js"></script>-->
         </div>
     </body>
 </html>
