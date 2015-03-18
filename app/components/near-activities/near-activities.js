@@ -14,11 +14,6 @@ class NearActivities {
       },
       zoom: 7
     };
-    this.options = {
-      label: {
-        title: 'test'
-      }
-    };
     this.nearActivities = [];
 
     $scope.$watch('ctrl.radius', (newRadius) => {

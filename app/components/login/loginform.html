@@ -13,6 +13,10 @@
           <input ng-model="loginData.password" type="password" minlength="8" name="password" title="password" required/>
         </md-input-container>
 
+        <div ng-if="loginFailed">
+          <p class="login-response-message">Incorrect username and/or password.</p>
+        </div>
+
         <div class="md-actions">
           <md-button>Login</md-button>
         </div>

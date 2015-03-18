@@ -26,7 +26,7 @@ class Activities {
 
         return undefined;
       }
-      else if (!category) {
+      else if (!category && prevCategory) {
 
         this.tempCache.resetCategoryFiltering();
       }
@@ -35,17 +35,16 @@ class Activities {
         this.tempCache.saveCategoryFiltering(category);
       }
 
-
     });
   }
 
   getCategoryFilter () {
 
-    let category = this.tempCache.getCategoryFilter();
+    let categoryObj = this.tempCache.getCategoryFilter();
 
-    if (category) {
+    if (categoryObj) {
 
-      return this.tempCache.getCategoryFilter().category;
+      return categoryObj.category;
     }
     else {
 
@@ -82,11 +81,11 @@ class Activities {
     return this.tempCache.getCachedQuery();
   }
 
-  //resetQueryCache () {
-  //
-  //  this.tempCache.resetQueryCache();
-  //  return '';
-  //}
+  resetQueryCache () {
+
+    this.tempCache.resetQueryCache();
+    return '';
+  }
 
   getToastPosition () {
 

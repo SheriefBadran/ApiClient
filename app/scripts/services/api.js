@@ -31,18 +31,6 @@ class Api {
     return this.get(`/activities.${mediaType}`);
   }
 
-  queryActivities (mediaType, query) {
-
-    if (query) {
-
-      return this.get(`/activities.${mediaType}?search=true&query=${query}`);
-    }
-    else {
-
-      return this.get(`/activities.${mediaType}`);
-    }
-
-  }
 
   nearActivities (mediaType, radius, coords) {
 

@@ -1,13 +1,12 @@
 <md-dialog flex="30">
   <near-activities radius="radius"></near-activities>
   <div layout="column">
-    <div layout>
-      <div flex="10" layout layout-align="center center">
-        <span>md-primary</span>
-      </div>
-
-      <md-slider flex class="md-primary" md-discrete ng-model="radius" step="1" min="1" max="100" aria-label="rating">
+    <div layout="column">
+      <md-slider id="range-slider" flex class="md-primary" md-discrete ng-model="radius" step="1" min="1" max="100" aria-label="rating">
       </md-slider>
+      <div style="z-index: 1000" flex layout layout-align="center center">
+        <span>radius (km)</span>
+      </div>
     </div>
   </div>
 </md-dialog>

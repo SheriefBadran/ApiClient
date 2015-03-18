@@ -42,6 +42,11 @@ class Tempcache {
     return this.queryFilter;
   }
 
+  resetQueryCache () {
+
+    this.queryFilter = '';
+  }
+
   setActivityAsDeleted (activity) {
 
     this.deletedActivity = activity;

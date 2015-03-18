@@ -8,19 +8,18 @@ class Login {
     this.api = api;
     this.$mdDialog = $mdDialog;
     this.isLoggedIn = !!localStorage.getItem('token');
-    console.log('ctrl running');
-    console.log(this.isLoggedIn);
   }
 
   login (loginData) {
 
     return this.api.loginUser(loginData)
+      .error((data, status) => {if (status === 401) throw false;})
       .then((data) => {
 
         this.isLoggedIn = true;
         localStorage.setItem('email', loginData.email);
         console.log('You successfully logged in.');
-      });
+      })
   }
 
   logout () {
@@ -45,10 +44,12 @@ class Login {
       templateUrl: 'components/login/loginform.html',
       controller: (scope, $mdDialog) => {
 
-        //this.login('testing');
+        scope.loginFailed = false;
         scope.loginUser = (loginData) => {
 
-          this.login(loginData).then(scope.closeDialog);
+          this.login(loginData)
+            .then(scope.closeDialog)
+            .catch(() => scope.loginFailed = true);
         };
 
         scope.closeDialog = function () {

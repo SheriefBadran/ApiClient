@@ -1,19 +1,17 @@
 <md-content flex>
-
   <!-- Activities filtering -->
   <div layout="row" layout-sm="column" layout-md="column" class="filter-wrapper">
-    <md-autocomplete flex class="search-field"
+    <md-autocomplete id="search" flex class="search-field"
       ng-disabled="ctrl.isDisabled"
       md-search-text="ctrl.searchText"
-      md-items="item in ctrl.cacheQuery(ctrl.searchText)"
-      ng-init="ctrl.searchText = ctrl.getCachedQuery() ? ctrl.getCachedQuery() : ctrl.resetQueryCache()"
+      md-items="item in []"
       placeholder="Search">
     </md-autocomplete>
     <md-icon md-svg-src="https://rawgit.com/google/material-design-icons/master/action/svg/production/ic_search_24px.svg"></md-icon>
 
     <div flex layout="row" layout-align="center">
       <md-select id="categories" ng-model="data.categoryObj">
-        <md-select-label>{{data.categoryObj.category ? data.categoryObj.category : 'Categories'}}</md-select-label>
+        <md-select-label>{{(data.categoryObj.category || ctrl.getCategoryFilter()) ? data.categoryObj.category : 'Categories'}}</md-select-label>
         <md-option ng-value="true">alla </md-option>
         <md-option ng-value="c" ng-repeat="c in ctrl.categories">{{c.category}}</md-option>
       </md-select>
@@ -27,7 +25,7 @@
 
   <!-- Looping out activities list -->
   <div layout="column">
-    <a ng-repeat="activity in ctrl.activities | filter: ctrl.getCategoryFilter() | filter: ctrl.getCachedQuery()" ui-sref="activity({id: activity.id})">
+    <a ng-repeat="activity in ctrl.activities | filter: ctrl.getCategoryFilter() | filter: ctrl.searchText" ui-sref="activity({id: activity.id})">
       <md-card>
         <h2>{{activity.name}}</h2>
         <p>{{activity.description}}</p>
