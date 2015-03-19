@@ -3,9 +3,6 @@
     <md-card>
       <md-item flex>
         <md-item-content flex>
-          <!--<div class="md-tile-left">-->
-            <!--<img src="//placeimg.com/120/120/any" class="face" alt="" flex>-->
-          <!--</div>-->
           <div class="md-tile-content" flex>
             <h2>{{ctrl.activity.name}}</h2>
             <h3>Beskrivning</h3>
@@ -14,6 +11,9 @@
             </p>
             <p class="description-content">
               <span>Kategori:</span> {{ctrl.activity.categories[0].category}}
+            </p>
+            <p class="description-content">
+              <span>Inomhusaktivitet:</span> {{ctrl.activity.indoors ? 'Ja' : 'Nej'}}
             </p>
             <md-content class="md-padding address-container">
               <p>
@@ -51,7 +51,7 @@
         </md-item-content>
       </md-item>
       <md-button ng-if="ctrl.checkAuthStatus() && (ctrl.activity.creator.email == ctrl.creator)"
-                 ng-click="ctrl.delete()">
+                 ng-click="ctrl.delete($event)">
         Radera
       </md-button>
     </md-card>

@@ -21,6 +21,14 @@ bower install
 
 8. Kör applikationen i webbläsaren.
 
+Lösenord för klientanvändare (resource creators):
+* Användare 1:
+  Användarnamn: test@test.com
+  Lösenord: lotsofsecrets
+* Användare 2:
+  Användarnamn: test2@test.com
+  Lösenord: supersecret
+
 ## Anpassningar i REST API
 
 Den största anpassningen jag gjort i mitt REST api i efterhand är konfigurationer i modellen position för att få geocoder (gem) att bete sig rätt
@@ -52,3 +60,6 @@ till en ES 6 klass.
 * För första gången testat på att använda både specen och angulars css ramverk för material design, vilket höjer upplevelsen av applikationen.
 
 * Stöd för blinda med hjälp av aria-attribut.
+
+* Implementation av karta som har en slider med vilken man kan justera sökradien. En förfrågan görs mot REST APIet real-time och kartan anpassar
+zoom och visning av markers för aktiviteter för vald sökradie.

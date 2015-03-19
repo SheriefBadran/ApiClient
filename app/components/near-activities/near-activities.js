@@ -25,7 +25,7 @@ class NearActivities {
 
           this.api.nearActivities('json', newRadius, pos.coords).then(nearActivities => { this.nearActivities = nearActivities; });
         });
-      }, 300);
+      }, 100);
     });
   }
 }

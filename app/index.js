@@ -24,11 +24,11 @@ angular.module('activityApp', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize'
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('home', {
-        url: '/activities',
+        url: '/aktiviteter',
         template: '<activities></activities>'
       })
       .state('activity', {
-        url: '/activites/:id',
+        url: '/aktiviteter/:id',
         template: '<activity-detail id="{{id}}"><activity-detail>',
         controller: function ($scope, $stateParams) {
           $scope.id = $stateParams.id;
@@ -39,7 +39,7 @@ angular.module('activityApp', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize'
         templateUrl: '404.html'
       });
 
-    $urlRouterProvider.otherwise('/activities');
+    $urlRouterProvider.otherwise('/aktiviteter');
     //$locationProvider.html5Mode(true);
   })
 ;

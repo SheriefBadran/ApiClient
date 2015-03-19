@@ -60,7 +60,7 @@ class CreateActivityFab {
       targetEvent: $event,
       templateUrl: 'components/create-activity-fab/createform.html',
       controller: (scope, $mdDialog) => {
-        
+
         scope.closeDialog = function () {
 
           $mdDialog.hide();

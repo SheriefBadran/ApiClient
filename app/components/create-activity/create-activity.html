@@ -2,56 +2,56 @@
 <md-content>
   <!--<md-button class="md-fab create-button"><span>+</span></md-button>-->
   <md-content flex class="md-padding">
-    <h3>Create new activity</h3>
+    <h3>Skapa ny aktivitet</h3>
     <form name="ctrl.createForm" ng-submit="ctrl.create(ctrl.data)" md-theme="forms" novalidate>
       <md-input-container>
-        <label>Enter activity name</label>
+        <label>Aktivitetens namn</label>
         <input ng-model="ctrl.data.name" type="text" ng-minlength="2" name="activityName" title="activity-name" required />
         <div ng-messages="ctrl.createForm.activityName.$error" ng-if="ctrl.createForm.activityName.$touched">
-          <div ng-message="required">Name is required</div>
-          <div ng-message="minlength">Minimum two characters</div>
+          <div ng-message="required">Aktivitetsnamn saknas</div>
+          <div ng-message="minlength">Minst 2 tecken</div>
         </div>
       </md-input-container>
 
       <md-input-container>
-        <label>Enter description</label>
+        <label>Beskrivning</label>
         <input ng-model="ctrl.data.description" type="text" ng-minlength="2" ng-maxlength="1000" name="description" title="description" required />
         <div ng-messages="ctrl.createForm.description.$error" ng-if="ctrl.createForm.description.$touched">
-          <div ng-message="required">Description is required</div>
-          <div ng-message="minlength">Minimum 2 characters</div>
-          <div ng-message="maxlength">Maximum 1000 characters</div>
+          <div ng-message="required">Beskrivning saknas</div>
+          <div ng-message="minlength">Minst 2 tecken</div>
+          <div ng-message="maxlength">Högst 1000 tecken</div>
         </div>
       </md-input-container>
 
       <md-input-container>
-        <label>Enter address</label>
+        <label>Adress</label>
         <input ng-model="ctrl.data.address" type="text" ng-minlength="2" maxlength="100" name="address" title="address" required />
         <div ng-messages="ctrl.createForm.address.$error" ng-if="ctrl.createForm.address.$touched">
-          <div ng-message="required">Address is required</div>
-          <div ng-message="minlength">Minimum 2 characters</div>
-          <div ng-message="maxlength">Maximum 100 characters</div>
+          <div ng-message="required">Adress saknas</div>
+          <div ng-message="minlength">Minst 2 tecken</div>
+          <div ng-message="maxlength">Högst 100 tecken</div>
         </div>
       </md-input-container>
 
       <md-radio-group name="indoors" ng-model="ctrl.data.indoors" required>
         <div class="custom-form-message" ng-messages="ctrl.createForm.indoors.$error">
-          <div ng-message="required">Select if activity is indoors or outdoors.</div>
+          <div ng-message="required">Ange om aktiviteten är inomhus eller utomhus.</div>
         </div>
-        <md-radio-button value="{{true}}">indoors</md-radio-button>
-        <md-radio-button value="{{false}}">outdoors</md-radio-button>
+        <md-radio-button value="{{true}}">inomhus</md-radio-button>
+        <md-radio-button value="{{false}}">utomhus</md-radio-button>
       </md-radio-group>
       <br/>
 
       <div class="custom-form-message" ng-messages="ctrl.createForm.category.$error">
-        <div ng-message="required">Select a category.</div>
+        <div ng-message="required">Välj en kategori.</div>
       </div>
       <md-select name="category" ng-model="ctrl.data.categoryObj" required>
-        <md-select-label>{{ctrl.data.categoryObj.category ? ctrl.data.categoryObj.category : 'Categorize'}}</md-select-label>
+        <md-select-label>{{ctrl.data.categoryObj.category ? ctrl.data.categoryObj.category : 'Kategorisera'}}</md-select-label>
         <md-option ng-value="c" ng-repeat="c in ctrl.categories">{{c.category}}</md-option>
       </md-select>
 
       <div class="md-actions">
-        <md-button>Create</md-button>
+        <md-button>Skapa</md-button>
       </div>
     </form>
   </md-content>

@@ -2,49 +2,39 @@
 <md-content>
   <!--<md-button class="md-fab create-button"><span>+</span></md-button>-->
   <md-content flex>
-    <h3>Update</h3>
+    <h3>Uppdatera aktivitet</h3>
     <form name="ctrl.updateForm" ng-submit="ctrl.updateForm.$valid && ctrl.update(ctrl.data)" md-theme="forms" novalidate>
 
       <md-input-container>
-        <label>Enter activity name</label>
+        <label>Aktivitetens namn</label>
         <input ng-model="ctrl.data.name" type="text" name="activityName" title="activity-name" required/>
       </md-input-container>
 
       <md-input-container>
-        <label>Enter description</label>
+        <label>Beskrivning</label>
         <input ng-model="ctrl.data.description" type="text" maxlength="1000" name="description" title="description" required/>
       </md-input-container>
 
       <md-input-container>
-        <label>Enter address</label>
+        <label>Adress</label>
         <input ng-model="ctrl.data.position.address" type="text" maxlength="100" name="address" title="address" required/>
       </md-input-container>
 
       <md-radio-group name="indoors" ng-model="ctrl.data.indoors" required>
         <div class="custom-form-message" ng-messages="ctrl.updateForm.indoors.$error">
-          <div ng-message="required">Select if activity is indoors or outdoors.</div>
+          <div ng-message="required">Ange om aktiviteten är inomhus eller utomhus.</div>
         </div>
-        <md-radio-button class="md-checked" value="true">indoors</md-radio-button>
-        <md-radio-button value="false">outdoors</md-radio-button>
+        <md-radio-button class="md-checked" value="true">inomhus</md-radio-button>
+        <md-radio-button value="false">utomhus</md-radio-button>
       </md-radio-group>
 
-      <div class="custom-form-message" ng-messages="ctrl.updateForm.category.$error">
-        <div ng-message="required">Select a category.</div>
-      </div>
-
       <md-select name="category" ng-model="ctrl.data.categoryObj" required>
-        <md-select-label>{{ctrl.data.categoryObj.category ? ctrl.data.categoryObj.category : 'Categorize'}}</md-select-label>
+        <md-select-label>{{ctrl.data.categoryObj.category ? ctrl.data.categoryObj.category : 'Kategorisera'}}</md-select-label>
         <md-option ng-value="c" ng-repeat="c in ctrl.categories">{{c.category}}</md-option>
       </md-select>
 
-      <!--Add category update if there is time left-->
-      <!--<md-select ng-model="data.categoryObj">-->
-        <!--<md-select-label>{{data.categoryObj.category ? data.categoryObj.category : 'Categorize'}}</md-select-label>-->
-        <!--<md-option ng-value="c" ng-repeat="c in ctrl.categories">{{c.category}}</md-option>-->
-      <!--</md-select>-->
-
       <div class="md-actions">
-        <md-button>Update</md-button>
+        <md-button>Uppdatera</md-button>
       </div>
     </form>
   </md-content>

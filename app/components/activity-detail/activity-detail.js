@@ -3,12 +3,13 @@
 import Tempcache from '../../scripts/services/tempcache.js';
 
 class ActivityDetail {
-	constructor($rootScope, api, $state, tempCache) {
+	constructor($rootScope, api, $state, tempCache, $mdDialog) {
 
     this.$rootScope = $rootScope;
     this.api = api;
     this.$state = $state;
     this.tempCache = tempCache;
+    this.$mdDialog = $mdDialog;
     this.activity = {};
     this.creator = localStorage.getItem('email');
     this.getActivity();
@@ -37,11 +38,22 @@ class ActivityDetail {
     return !!localStorage.getItem('token');
   }
 
-  delete () {
+  delete ($event) {
 
-    this.api.delete(`/activities/${this.id}`)
-      .then(data => this.tempCache.setActivityAsDeleted(data))
-      .then(() => this.$state.go('home'));
+    let confirmDelete = this.$mdDialog.confirm()
+      .title('Radera aktiviteten')
+      .content('Är du säker på att du vill radera aktiviteten?')
+      .ok('Ja')
+      .cancel('Nej')
+      .targetEvent($event);
+
+    this.$mdDialog
+      .show(confirmDelete)
+      .then(() => {
+          this.api.delete(`/activities/${this.id}`)
+            .then(data => this.tempCache.setActivityAsDeleted(data))
+            .then(() => this.$state.go('home'));
+        });
   }
 }
 
