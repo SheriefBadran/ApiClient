@@ -35,3 +35,18 @@ på den adressen kontrollen får med en adressparameter. Den nya positionen läg
 Jag hade heller inte sett till att resurser kan sparas, uppdateras och raderas endast av ägaren, vilket jag också fick lägga till logik för i efterhand.
 
 Slutligen behövde jag i actionmetoden update lägga till logik för att uppdatera en kategori tillhörande som tillhör en befintlig aktivitiet.
+
+## Betygshöjande faktorer
+
+* Försök till att böja angular 1.4 till att vara så likt kommande angular 2.0 som möjligt med version 1.4 + ES 6. Varje direktiv är knuten
+till en ES 6 klass.
+
+* Nästan hela applikationen är byggd med komponenter som är löst kopplade till varandra och som är relativt lätt att återanvända.
+
+* Använt custom directives genom hela applikationen.
+
+* Deep linking.
+
+* Sköter inloggning med JWT.
+
+* För första gången testat på att använda både specen och angulars css ramverk för material design, vilket höjer upplevelsen av applikationen.

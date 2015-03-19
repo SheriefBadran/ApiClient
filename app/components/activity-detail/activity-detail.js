@@ -28,7 +28,7 @@ class ActivityDetail {
       this.activity = activity;
     })
      // Redirect to home if resource is not found.
-    .catch(() => { this.$state.go('not-found'); });
+    .catch(() => { this.$state.go('home'); });
   }
 
   checkAuthStatus () {
