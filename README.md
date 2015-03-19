@@ -50,3 +50,5 @@ till en ES 6 klass.
 * Sköter inloggning med JWT.
 
 * För första gången testat på att använda både specen och angulars css ramverk för material design, vilket höjer upplevelsen av applikationen.
+
+* Stöd för blinda med hjälp av aria-attribut.

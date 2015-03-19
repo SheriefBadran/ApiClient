@@ -1,5 +1,6 @@
 <md-button id="createButton"
            class="md-fab create-button"
+           aria-label="create activity"
            md-theme="forms"
            ng-click=" ctrl.isDetailed() ? ctrl.showUpdateDialog($event) : ctrl.showCreateDialog($event)"
            ng-show="ctrl.checkAuthStatus() && ctrl.checkCreator()">

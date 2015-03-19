@@ -12,7 +12,7 @@
     <div flex layout="row" layout-align="center">
       <md-select id="categories" ng-model="data.categoryObj">
         <md-select-label>{{(data.categoryObj.category || ctrl.getCategoryFilter()) ? data.categoryObj.category : 'Categories'}}</md-select-label>
-        <md-option ng-value="true">alla </md-option>
+        <md-option value="alla" ng-value="true">alla </md-option>
         <md-option ng-value="c" ng-repeat="c in ctrl.categories">{{c.category}}</md-option>
       </md-select>
     </div>
