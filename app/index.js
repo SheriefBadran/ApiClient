@@ -24,26 +24,22 @@ angular.module('activityApp', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize'
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('home', {
-        url: '/',
+        url: '/activities',
         template: '<activities></activities>'
       })
       .state('activity', {
-        url: '/activity/:id',
+        url: '/activites/:id',
         template: '<activity-detail id="{{id}}"><activity-detail>',
         controller: function ($scope, $stateParams) {
           $scope.id = $stateParams.id;
         }
-      })
-      .state('map', {
-        url: '/near',
-        template: '<near-activities></near-activities>'
       })
       .state('not-found', {
         url: '/not-found',
         templateUrl: '404.html'
       });
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/activities');
     //$locationProvider.html5Mode(true);
   })
 ;

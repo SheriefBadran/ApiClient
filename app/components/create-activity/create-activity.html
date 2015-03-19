@@ -3,7 +3,6 @@
   <!--<md-button class="md-fab create-button"><span>+</span></md-button>-->
   <md-content flex class="md-padding">
     <h3>Create new activity</h3>
-
     <form name="ctrl.createForm" ng-submit="ctrl.create(ctrl.data)" md-theme="forms" novalidate>
       <md-input-container>
         <label>Enter activity name</label>
@@ -16,7 +15,7 @@
 
       <md-input-container>
         <label>Enter description</label>
-        <input ng-model="data.description" type="text" ng-minlength="2" ng-maxlength="1000" name="description" title="description" required />
+        <input ng-model="ctrl.data.description" type="text" ng-minlength="2" ng-maxlength="1000" name="description" title="description" required />
         <div ng-messages="ctrl.createForm.description.$error" ng-if="ctrl.createForm.description.$touched">
           <div ng-message="required">Description is required</div>
           <div ng-message="minlength">Minimum 2 characters</div>
@@ -26,7 +25,7 @@
 
       <md-input-container>
         <label>Enter address</label>
-        <input ng-model="data.address" type="text" ng-minlength="2" maxlength="100" name="address" title="address" required />
+        <input ng-model="ctrl.data.address" type="text" ng-minlength="2" maxlength="100" name="address" title="address" required />
         <div ng-messages="ctrl.createForm.address.$error" ng-if="ctrl.createForm.address.$touched">
           <div ng-message="required">Address is required</div>
           <div ng-message="minlength">Minimum 2 characters</div>
@@ -34,7 +33,7 @@
         </div>
       </md-input-container>
 
-      <md-radio-group name="indoors" ng-model="data.indoors" required>
+      <md-radio-group name="indoors" ng-model="ctrl.data.indoors" required>
         <div class="custom-form-message" ng-messages="ctrl.createForm.indoors.$error">
           <div ng-message="required">Select if activity is indoors or outdoors.</div>
         </div>
@@ -46,8 +45,8 @@
       <div class="custom-form-message" ng-messages="ctrl.createForm.category.$error">
         <div ng-message="required">Select a category.</div>
       </div>
-      <md-select name="category" ng-model="data.categoryObj" required>
-        <md-select-label>{{data.categoryObj.category ? data.categoryObj.category : 'Categorize'}}</md-select-label>
+      <md-select name="category" ng-model="ctrl.data.categoryObj" required>
+        <md-select-label>{{ctrl.data.categoryObj.category ? ctrl.data.categoryObj.category : 'Categorize'}}</md-select-label>
         <md-option ng-value="c" ng-repeat="c in ctrl.categories">{{c.category}}</md-option>
       </md-select>
 

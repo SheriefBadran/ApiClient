@@ -32,6 +32,8 @@ class UpdateActivity {
     this.api.getActivity(this.$stateParams.id)
       .then(data => {
         console.log(data);
+        data.categoryObj = data.categories[0];
+        data.indoors = data.indoors ? 'true' : 'false';
         this.data = data;
       });
   }

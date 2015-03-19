@@ -8,38 +8,51 @@
           <!--</div>-->
           <div class="md-tile-content" flex>
             <h2>{{ctrl.activity.name}}</h2>
-            <h4>{{ctrl.activity.categories.category}}</h4>
-            <h3>Description</h3>
+            <h3>Beskrivning</h3>
             <p class="description-content">
               {{ctrl.activity.description}}
+            </p>
+            <p class="description-content">
+              <span>Kategori:</span> {{ctrl.activity.categories[0].category}}
             </p>
             <md-content class="md-padding address-container">
               <p>
                 <span>
-                  Address:
+                  Adress:
                   {{ctrl.activity.position.address}}
                 </span>
               </p>
               <p>
                 <span>
-                  City:
+                  <!--<md-icon md-svg-src="https://rawgit.com/google/material-design-icons/master/maps/svg/production/ic_place_24px.svg"></md-icon>-->
+                  Postnummer:
+                  {{ctrl.activity.position.zipcode}}
+                </span>
+              </p>
+              <p>
+                <span>
+                  Stad:
                   {{ctrl.activity.position.city}}
                 </span>
               </p>
               <p>
                 <span>
                   <!--<md-icon md-svg-src="https://rawgit.com/google/material-design-icons/master/maps/svg/production/ic_place_24px.svg"></md-icon>-->
-                  County:
-                  {{ctrl.activity.position.zipcode}}, {{ctrl.activity.position.country}}
+                  Land:
+                  {{ctrl.activity.position.country}}
                 </span>
               </p>
             </md-content>
+            <br/>
+            <div flex layout="row" layout-align="start">
+              Skapad av: {{ctrl.activity.creator.email}}
+            </div>
           </div>
         </md-item-content>
       </md-item>
       <md-button ng-if="ctrl.checkAuthStatus() && (ctrl.activity.creator.email == ctrl.creator)"
                  ng-click="ctrl.delete()">
-        Delete
+        Radera
       </md-button>
     </md-card>
   </div>

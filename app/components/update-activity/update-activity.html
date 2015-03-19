@@ -24,13 +24,14 @@
         <div class="custom-form-message" ng-messages="ctrl.updateForm.indoors.$error">
           <div ng-message="required">Select if activity is indoors or outdoors.</div>
         </div>
-        <md-radio-button value="{{true}}">indoors</md-radio-button>
-        <md-radio-button value="{{false}}">outdoors</md-radio-button>
+        <md-radio-button class="md-checked" value="true">indoors</md-radio-button>
+        <md-radio-button value="false">outdoors</md-radio-button>
       </md-radio-group>
 
       <div class="custom-form-message" ng-messages="ctrl.updateForm.category.$error">
         <div ng-message="required">Select a category.</div>
       </div>
+
       <md-select name="category" ng-model="ctrl.data.categoryObj" required>
         <md-select-label>{{ctrl.data.categoryObj.category ? ctrl.data.categoryObj.category : 'Categorize'}}</md-select-label>
         <md-option ng-value="c" ng-repeat="c in ctrl.categories">{{c.category}}</md-option>

@@ -17,7 +17,6 @@ class CreateActivity {
 
   create (data) {
 
-    console.log(this.createForm);
     if (!this.createForm.$valid) return;
 
 
