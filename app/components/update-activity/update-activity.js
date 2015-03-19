@@ -22,7 +22,6 @@ class UpdateActivity {
 
         this.$mdDialog.hide();
         // Broadcast the updated activity object to activity-detail.js to update the activity-detail view when update succeed.
-        console.log(data);
         this.$rootScope.$emit('updatedActivity', data);
       });
   }
@@ -31,7 +30,7 @@ class UpdateActivity {
 
     this.api.getActivity(this.$stateParams.id)
       .then(data => {
-        console.log(data);
+
         data.categoryObj = data.categories[0];
         data.indoors = data.indoors ? 'true' : 'false';
         this.data = data;

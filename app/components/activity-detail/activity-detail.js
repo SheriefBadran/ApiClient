@@ -39,7 +39,6 @@ class ActivityDetail {
 
   delete () {
 
-    console.log(`0. activity detail delete is calling setActivityAsDeleted`);
     this.api.delete(`/activities/${this.id}`)
       .then(data => this.tempCache.setActivityAsDeleted(data))
       .then(() => this.$state.go('home'));

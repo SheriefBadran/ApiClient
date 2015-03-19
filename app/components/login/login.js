@@ -18,7 +18,6 @@ class Login {
 
         this.isLoggedIn = true;
         localStorage.setItem('email', loginData.email);
-        console.log('You successfully logged in.');
       })
   }
 

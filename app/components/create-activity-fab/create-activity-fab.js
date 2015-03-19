@@ -10,16 +10,7 @@ class CreateActivityFab {
     this.$stateParams = $stateParams;
     this.$rootScope = $rootScope;
     this.creator = {};
-
   }
-
-  //getActivity () {
-  //
-  //  if (!this.$stateParams.id) return;
-  //
-  //  this.api.getActivity(this.$stateParams.id).then(({email}) => { this.email = email; });
-  //  console.log(this.email);
-  //}
 
   checkCreator () {
 
@@ -31,7 +22,6 @@ class CreateActivityFab {
 
       return true;
     }
-
   }
 
   checkAuthStatus () {
@@ -70,13 +60,7 @@ class CreateActivityFab {
       targetEvent: $event,
       templateUrl: 'components/create-activity-fab/createform.html',
       controller: (scope, $mdDialog) => {
-
-        //this.login('testing');
-        //scope.create = (data) => {
-        //
-        //
-        //};
-
+        
         scope.closeDialog = function () {
 
           $mdDialog.hide();
