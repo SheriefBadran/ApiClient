@@ -28,6 +28,8 @@ Lösenord för klientanvändare (resource creators):
 * Användare 2:
   Användarnamn: test2@test.com
   Lösenord: supersecret
+  
+  OBSERVERA: Glöm inte att lägga in en ny api-nyckel i anropen till REST api:et i filen scripts/services/api.js efter databasen är seedad med exempeldata.
 
 ## Anpassningar i REST API
 
