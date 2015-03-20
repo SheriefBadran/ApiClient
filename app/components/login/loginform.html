@@ -6,11 +6,19 @@
         <md-input-container>
           <label>Epost</label>
           <input ng-model="loginData.email" type="email" name="email" title="email" required/>
+          <div ng-messages="loginForm.email.$error" ng-if="loginForm.email.$touched">
+            <div ng-message="required">Epost krävs</div>
+            <div ng-message="email">Ange en giltig epost</div>
+          </div>
         </md-input-container>
 
         <md-input-container>
           <label>Lösenord</label>
           <input ng-model="loginData.password" type="password" minlength="8" name="password" title="password" required/>
+          <div ng-messages="loginForm.password.$error" ng-if="loginForm.password.$touched">
+            <div ng-message="required">Lösenord krävs</div>
+            <div ng-message="minlength">Minst 8 tecken</div>
+          </div>
         </md-input-container>
 
         <div ng-if="loginFailed">
